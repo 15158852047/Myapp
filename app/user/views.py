@@ -5,7 +5,7 @@ from ..models import db
 
 @user.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('Main.html')
 
 @user.route('/login/',methods=['GET','POST'])
 def login():
@@ -55,7 +55,7 @@ def regist():
 @user.route('/logout/')
 def logout():
     session.pop('user_id')
-    return redirect(url_for('user.index'))
+    return redirect(url_for('Main.index'))
 
 
 

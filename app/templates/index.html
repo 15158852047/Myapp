@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
@@ -39,6 +39,10 @@
             background-color: #3e8e41;
         }
     </style>
+
+        {% block head%}
+
+    {% endblock %}
 </head>
 <body>
 
@@ -58,7 +62,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav" id="find">
-          <li><a href="#">首页</a></li>
+          <li  class="active"><a href="#">首页</a></li>
           <li><a href="#">产品查看</a></li>
           <li><a href="#">消息推送</a></li>
           <li><a href="#">发布</a></li>
@@ -86,17 +90,20 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+{% block mainpage  %}
+
+{% endblock  %}
+
 <script>
     var find = document.getElementById('find');
     var lis = find.getElementsByTagName('li');
     var i;
     for (i=0;i<lis.length;i++) {
-        var li = lis[i];
-        li.onclick = function () {
-          for (i=0;i<len;i++) {
-          lis[i].className = '';
-         }
-         this.className = 'active'
+        lis[i].onclick = function () {
+          for (var j=0;j<lis.length;j++) {
+          lis[j].className = '';
+          }
+         this.className = 'active';
         }
     }
 

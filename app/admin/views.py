@@ -3,4 +3,4 @@ from . import admin
 
 @admin.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('Main.html')
