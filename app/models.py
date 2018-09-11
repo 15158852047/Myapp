@@ -42,3 +42,4 @@ class Product(db.Model):
     money = db.Column(db.Integer)
     Info = db.Column(db.String(200))
     have = db.Column(db.Integer)
+    image = db.Column(db.String(50))

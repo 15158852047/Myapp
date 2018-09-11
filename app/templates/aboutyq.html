@@ -1,0 +1,211 @@
+{%  extends 'index.html' %}
+
+{% block title %}
+        关于永琪
+{% endblock %}
+
+
+{% block head  %}
+{#<link href="{{ url_for('static',filename='css/aboutyq/common.css') }}" rel="stylesheet">#}
+<style type="text/css">
+        .col-mdpc {
+            width: 49%;
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .col-md-6 {
+            width: 49%;
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            min-width: 100%;
+        }
+
+        .pcimg {
+            max-width: 100%;
+            width: 100%
+        }
+
+        #hengScreen .row {
+            margin-left: 0;
+        }
+
+        #contents img {
+            max-width: 100%;
+            width: 100%
+        }
+
+        /*.pcfont{  font-size:1rem;  width:64%;  }*/
+        H3 {
+            font-size: 1.4em;
+            line-height: 1.5em;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .text {
+            width: 92%;
+            margin: 0 auto;
+            line-height: 2em;
+        }
+
+        #shuScreen .text {
+            margin: 0 auto 40px auto;
+        }
+
+        .text p {
+            text-align: left;
+        }
+        #foot hr{
+            margin-top: 45px;
+        }
+        @media screen and (max-width: 767px){
+            #foot hr{
+                margin-top: 0;
+            }
+        }
+    </style>
+
+{% endblock %}
+
+{% block mainpage %}
+
+<div id="contents">
+        <div class="container pcfont " id="hengScreen">
+            <h2 style="font-size: 22px;text-align: center;margin: 30px 0 0 0;padding-bottom: 30px;border-bottom:1px dashed #ccc">
+                企业简介</h2>
+
+            <div class="row" style="margin-top: 30px">
+                <div class="col-mdpc">
+                    <div class="text">
+                        <h3>上海永琪美容美发经营管理有限公司</h3>
+                        <p>成立于1999年，是一家集美容美发、形象设计、美体塑身、养生保健、产品开发、教育培训、市场营销为一体的全国大型综合性美容美发专业连锁机构。<br/><br/><br/><br/><br/><br/><br/><br/>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-mdpc">
+                    <img class="pcimg" src="{{ url_for('static',filename='images/aboutyq/1.jpg') }}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-mdpc">
+                    <img class="pcimg" src="{{ url_for('static',filename='images/aboutyq/2.jpg') }}">
+                </div>
+
+                <div class="col-mdpc">
+                    <div class="text">
+                        <h3>永琪创始人王勇先生</h3>
+                        <P>1991年来到上海，进入美容美发行业学习专业技术和经营管理，经几年的勤奋努力和对事业不懈的追求，独创了特有的经营理念，由最初的一个小型美容美发店迅速发展成为集上海永琪美容美发经营管理有限公司、点美公司、上海永琪美容美发技能学校、上海永琪奉贤教育培训基地和20个外省公司为一体的大型连锁企业。
+                        </P>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-mdpc">
+                    <div class="text">
+                        <h3>品牌建设</h3>
+                        <p>公司成立之初，我们就重视品牌建设，通过对美容美发市场发展和竞争情况的综合分析，建立以符合自身特点的品牌发展之路，从品牌的形象、传播到品牌文化的宣传，通过以扩大直营店占有量和优质高品位服务来提高品牌价值，从而达到在目标顾客心中形成“永琪”品牌的独特位置。加强对品牌文化的宣传让其在经营中逐步形成文化积累，让消费者在认知和情感上认可“永琪”品牌。同时我们又针对行业发展的需求，对品牌实行升级和提升，让“永琪”大品牌发展之路得到了强劲的推动。加强与宣传媒体的合作，整合宣传优势，“永琪”品牌理念有效的传递给广大消费者，取得了良好的品牌美舆度和知名度。
+                        </p>
+                    </div>
+                </div>
+                <div class="col-mdpc">
+                    <img class="pcimg" src="{{ url_for('static',filename='images/aboutyq/3.jpg') }}"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-mdpc">
+                    <img class="pcimg" src="{{ url_for('static',filename='images/aboutyq/4.jpg') }}"/>
+                </div>
+                <div class="col-mdpc">
+                    <div class="text">
+                        <h3>以人为本，追求卓越</h3>
+                        <p>企业的发展离不开人才的选用和培养，永琪企业一直贯彻“以人为本，追求卓越”的企业理念，重视人才，培养人才，因为我们知道人才对企业的重要性，也是我们的用人之道，建立学习型企业是我们发展的重要战略，公司长期以来针对不同类型的人员组织不同方式的培训和教育。在服务一线的专业技术人员我们采用理论学习和实际操作相结合的方法，总部成立美发专业技术培训部和美容专业技术培训部，定期不定期的组织培训；对新开门店和新员工上岗，公司有专门的机构进行培训，训练课程有服务理念、服务流程、礼仪知识、职业道德和爱岗敬业等；公司管理人员的培训和再提高更是我们工作的重点，采用请进来走出去的方式，外请大专院校管理专业的教授来公司讲授经营管理课程，请世界级的专业大师到公司面授当今最新流行趋势和最新技术，还选派有经验的管理干部赴国外进修把他们学到的经营管理和技术在公司推广；永琪美容美发技能培训学校长年开班，合格的学员通过国家职能部门的专业考核；多年来的人才培养和教育培训结出了丰硕的成果，实践了永琪做企业家和做专家的人才观，为企业的发展提供源源不断的人才储备和保障。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-mdpc">
+                    <div class="text">
+                        <h3>美容美发行业</h3>
+                        <p>美容美发行业属于服务类别行业，为广大消费者提供优质的服务，这就要求我们优秀的服务理念和有过硬的专业技术，以及能引导潮流的时尚意识，在当今提倡体验经济时代，追求美丽追求时尚是顾客的需求，在这过程中，消费者体验我们给他们带来的服务。永琪遵循顾客的需求就是我们的服务标准，为顾客着想，为他们设计美，创造美，一切为了顾客，为此我们制定了严格的服务规范和流程，实行全员服务规范和流程培训，合格后上岗的制度，公司总部除了成立客户服务部，还专门成立监察部，门店建立顾客档案，总部建立客户服务档案数据库，运用软件进行分析研究，为企业管理和经营提供有效数据。
+                        </p>
+                    </div>
+                </div>
+                <div class="col-mdpc">
+                    <img class="pcimg" src="{{ url_for('static',filename='images/aboutyq/5.jpg') }}"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-mdpc">
+                    <img class="pcimg" src="{{ url_for('static',filename='images/aboutyq/6.jpg') }}"/>
+                </div>
+                <div class="col-mdpc">
+                    <div class="text">
+                        <h3>一切为了顾客，一切为了创新</h3>
+                        <P>永琪企业拥有一大批思想前卫、创意新颖、领先潮流的高素质、高水平有技术职称的发型设计师、高级美容师和营运经理等专业技术人才，永琪发型设计一直引领沪上时尚，公司专门成立流行趋势发型研发小组，邀请国内外专家共同设计最新发型，每年2次高规格、大规模的代表当今世界潮流的时尚发型发布成为上海乃至全国发型的流行趋势；永琪美容技术更为广大女性所爱戴；“一切为了顾客，一切为了创新”，永琪人精湛的技术、热情周到的服务不仅得到专家和同行的认可，更在广大消费者心目中留下良好的口碑。
+                        </P>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-mdpc">
+                    <div class="text">
+                        <h3>大数据</h3>
+                        <p>大数据作为云计算、互联网之后又一大颠覆性的技术革命。数据是真正有价值的资产这一现象正渐渐被人们认可，它通过技术的创新与发展，以及数据的全面感知、收集、分析、共享，为人们提供了一种全新的看待世界的方法。更多地基于事实与数据做出决策，这样的思维方式，可以预见，将推动一些习惯于靠“差不多”运行的社会发生巨大变革。永琪紧跟时代发展，成立大数据信息中心，整合企业数据的能力，探索数据背后价值和制定精确行动纲领的能力，进行精确快速实时行动的能力，为企业健康发展提供精准的依据。
+                        </p>
+                    </div>
+                </div>
+                <div class="col-mdpc">
+                    <img class="pcimg" src="{{ url_for('static',filename='images/aboutyq/7.jpg') }}"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-mdpc">
+                    <img class="pcimg" src="{{ url_for('static',filename='images/aboutyq/8.jpg') }}"/>
+                </div>
+                <div class="col-mdpc">
+                    <div class="text">
+                        <h3>社会责任</h3>
+                        <p>永琪公司时刻牢记自己的社会责任，在取得物质文明的同时，注重精神文化建设，在取得经济效益的时候，把对国家对社会对员工的责任始终放在重要位置。在社会责任方面，永琪人始终站在行业前头，08年震惊中外的四川5.12特大地震发生第二天，公司立即觉得向灾区捐献328万元人民币，专门派员赴地震灾区洽谈都江堰中学的灾后重建，2009年4月又通过中国儿童少年基金会向“汶川大地震孤残儿童救助专项基金”捐款50万元人民币。对企业的员工我们专门成立“永琪爱心联盟”。发动员工自觉捐献22.8万元，救助过一位患白血病的员工，让他从死亡线上回到了工作岗位，自公司成立来，援助和救助过几百多名患重病和困难员工，总金额达220多万元，实践了我们对社会和员工的责任。公司关心行业的教育事业，在四川和当地的职校联合开设美容美发专业班，不光帮助他们就学，还保证扶持他们就业。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-mdpc">
+                    <div class="text">
+                        <h3>一份耕耘，一份收获</h3>
+                        <p>一份耕耘，一份收获，多年的勤奋努力结出了丰硕成果，小生意做出了大市场，公司的业绩节节攀升，取得了巨大的经济效益。2004年被上海市美发美容行业协会评为“四星级服务企业”。2007年6月被中华全国工商业联合会美容化妆品业商会授予“中国明星美容业连锁机构”。2015年被上海市美发美容协会评为“五星级服务企业”，2018年被上海市单用途预付卡协会评定为“放心消费，品牌企业”，连续16年参加上海国际美发美容节被上海市美发美容协会评为“卓越贡献奖”单位。
+                        </p>
+                    </div>
+                </div>
+                <div class="col-mdpc">
+                    <img class="pcimg" src="{{ url_for('static',filename='images/aboutyq/9.jpg') }}"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-mdpc">
+                    <img class="pcimg" src="{{ url_for('static',filename='images/aboutyq/10.jpg') }}"/>
+                </div>
+                <div class="col-mdpc">
+                    <div class="text">
+                        <h3>我们创造美，我们经营美</h3>
+                        <p>我们创造美，我们经营美。互联网时代让永琪发展跨上了高速公路，大数据时代给了永琪发展创造了前所未有的机遇。我们有信心把我们的美丽事业做好。永琪下一步是按企业的长远发展规划，运用大数据结合互联网+的全新服务模式，使美容美发企业搭上信息磁悬浮快车，运用信息工具，开发美业预约平台，让顾客时时刻刻享受到最优质和最便捷的服务。对内我们要加强企业规范化管理，优化市场组合，发挥品牌连锁优势，团结创新，努力拼搏，以稳健的步伐、独特的经营理念和服务至上的宗旨迅速扩占市场，在做好沿海大中城市市场的基础上，向全国进军，让“美丽天下，盛世永琪”的口号响彻大江南北。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock %}

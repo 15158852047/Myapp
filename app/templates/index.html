@@ -3,111 +3,433 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <style type="text/css">
-        .dropbtn{
-            color: #ffffff;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
-        .dropdown{
-            display: inline-block;
-          float:left;
-        }
-        .dropdown-content{
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow:  0px 8px 16px 0px rgba(0,0,0,0.2);
-        }
-        .dropdown-content a{
-            color: #000000;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        .dropdown-content a:hover{background-color: #f1f1f1}
-        .dropdown:hover .dropdown-content{
-            display: block;
-        }
-        .dropdown:hover .dropbtn{
-            background-color: #3e8e41;
-        }
-    </style>
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
 
-        {% block head%}
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+    <link href="http://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/css/jquery-ui.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/css/bootstrap.css') }}" > <!-- Bootstrap-Core-CSS -->
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/css/style.css') }}"  type="text/css" media="all" /> <!-- Style-CSS -->
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/css/font-awesome.css') }}" > <!-- Font-Awesome-Icons-CSS -->
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/css/jquery.desoslide.css') }}">
+	<link href="{{ url_for('static',filename='css/css/popuo-box.css') }}" rel="stylesheet" type="text/css" media="all" />
+
+	<style type="text/css">
+.banner-top {
+	background: url('{{ url_for('static',filename='images/images/banner1.jpg') }}') no-repeat 0px 0px;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	-moz-background-size: cover;
+	min-height: 780px;
+}
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('{{ url_for('static',filename='fonts/fontawesome-webfont.eot?v=4.6.3') }}');
+  src: url('{{ url_for('static',filename='fonts/fontawesome-webfont.eot?#iefix&v=4.6.3') }}') format('embedded-opentype'), url('{{ url_for('static',filename='fonts/fontawesome-webfont.woff2?v=4.6.3') }}') format('woff2'), url('{{ url_for('static',filename='fonts/fontawesome-webfont.woff?v=4.6.3') }}') format('woff'), url('{{ url_for('static',filename='fonts/fontawesome-webfont.ttf?v=4.6.3') }}') format('truetype'), url('{{ url_for('static',filename='fonts/fontawesome-webfont.svg?v=4.6.3#fontawesomeregular') }}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.banner-top1 {
+	background: url('{{ url_for('static',filename='images/images/banner2.jpg') }}') no-repeat 0px 0px;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	-moz-background-size: cover;
+	min-height: 780px;
+}
+
+.banner-top2 {
+	background: url('{{ url_for('static',filename='images/images/banner5.jpg') }}') no-repeat 0px 0px;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	-moz-background-size: cover;
+	min-height: 780px;
+}
+
+.banner-top3 {
+	background: url('{{ url_for('static',filename='images/images/banner4.jpg') }}') no-repeat 0px 0px;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	-moz-background-size: cover;
+	min-height: 780px;
+}
+.callbacks_nav {
+	position: absolute;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	top: 76%;
+	left: 40px;
+	opacity: 0.7;
+	z-index: 3;
+	text-indent: -9999px;
+	overflow: hidden;
+	text-decoration: none;
+	height: 34px;
+	width: 34px;
+	background: url('{{ url_for('static',filename='images/images/left.png') }}') no-repeat 0px 0px;
+}
+
+.callbacks_nav.next {
+	left: auto;
+	background: url('{{ url_for('static',filename='images/images/right.png') }}') no-repeat 0px 0px;
+	right: 47%;
+}
+
+.callbacks_nav.prev {
+	left: auto;
+	background: url('{{ url_for('static',filename='images/images/left.png') }}') no-repeat 0px 0px;
+	left: 47%;
+}
+section.middle-sec-agileinfo-w3ls{
+	background: -webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('{{ url_for('static',filename='images/images/banner5.jpg') }}') no-repeat;
+	background: -moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('{{ url_for('static',filename='images/images/banner5.jpg') }}') no-repeat;
+	background: -ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('{{ url_for('static',filename='images/images/banner5.jpg') }}') no-repeat;
+	background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('{{ url_for('static',filename='images/images/banner5.jpg') }}') no-repeat;
+	background-size: cover;
+
+}
+.innerpage-banner {
+    background: url('{{ url_for('static',filename='images/images/banner1.jpg') }}') no-repeat center;
+    background-size: cover;
+    min-height: 300px;
+}
+.welcome-bottom{
+	background: url('{{ url_for('static',filename='images/images/banner5.jpg') }}') no-repeat center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+#slideshow > button b
+{
+		display: block;
+
+		width: 50px;
+		height: 50px;
+
+		 background: #f2994a url('{{ url_for('static',filename='images/images/prev1.png') }}') no-repeat 4px 8px;
+
+		text-indent: -10000px;
+		    outline: none;
+}
+#slideshow button.next b
+{
+		background: #f2994a url('{{ url_for('static',filename='images/images/next1.png') }}') no-repeat 10px 8px;
+}
+.price-main-info .card-header {
+	background: url('{{ url_for('static',filename='images/images/price.jpg') }}')no-repeat 0px 0px;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	-ms-background-size: cover;
+	background-size: cover;
+	min-height: 192px;
+}
+#toTop {
+    display: none;
+    text-decoration: none;
+    position: fixed;
+    bottom: 30px;
+    right: 2%;
+    overflow: hidden;
+    z-index: 999;
+    width: 34px;
+    height: 34px;
+    border: none;
+    text-indent: 100%;
+    background: #fff url('{{ url_for('static',filename='images/images/arr.png') }}') no-repeat 1px 1px;
+    box-shadow: 0 0 0 20px rgba(243, 154, 72, 0.32), 0 0 0 10px rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+}
+
+
+</style>
+
+
+	{% block head%}
 
     {% endblock %}
 </head>
 <body>
+<header>
+	<div class="container agile-banner_nav">
+		<div class="row header-top">
+			<div class="col-md-5 top-left p-0">
+				<p><i class="fa fa-phone" aria-hidden="true"></i> Call us : +18044261149 </p>
+			</div>
+			<div class="col-md-7 top-right p-0">
+				<p><i class="fa fa-map-marker" aria-hidden="true"></i> Australian Travel Agency, Ravish NSW, Australia.
+			</div>
+		</div>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">L论坛</a>
-    </div>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav" id="find">
-          <li  class="active"><a href="#">首页</a></li>
-          <li><a href="#">产品查看</a></li>
-          <li><a href="#">消息推送</a></li>
-          <li><a href="#">发布</a></li>
-          <li><a href="#">关于我们</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        {%  if user %}
-      <div class="dropdown">
-    <button class="dropbtn">{{user.name}}</button>
-    <div class="dropdown-content">
-        <a href="#">我的博客</a>
-        <a href="#">我的关注</a>
-        <a href="#">我的消息</a>
-        <a href="#">我的资料</a>
-    </div>
-        </div>
-        <li><a href="{{url_for('user.logout')}}">注销</a></li>
-        {%  else  %}
-        <li><a href="{{url_for('user.login')}}">登录</a></li>
-        <li><a href="{{url_for('user.regist')}}">注册</a></li>
-        {%  endif  %}
+			<h1><a class="navbar-brand" href="index.html">永琪</a></h1>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
 
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+			<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="index.html">主页<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="about.html">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="services.html">Services</a>
+					</li>
 
+					{% if user %}
+					<li class="dropdown nav-item">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">{{ user.name }}
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu agile_short_dropdown">
+							<li>
+								<a href="pricing.html">Pricing Plans</a>
+							</li>
+							<li>
+								<a href="about.html">About Page</a>
+							</li>
+						</ul>
+					</li>
+					<li class="nav-item pr-lg-0">
+						<a class="nav-link pr-lg-0" href="{{ url_for('user.logout') }}">注销</a>
+					</li>
+
+					{% else %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ url_for('user.login') }}">登录</a>
+					</li>
+					<li class="nav-item pr-lg-0">
+						<a class="nav-link pr-lg-0" href="{{ url_for('user.regist') }}">注册</a>
+					</li>
+
+					{% endif %}
+				</ul>
+			</div>
+
+		</nav>
+	</div>
+</header>
+
+<div class="slider">
+			<div class="callbacks_container">
+				<ul class="rslides callbacks callbacks1" id="slider4">
+					<li>
+						<div class="banner-top">
+						<div class="layer">
+							<div class="container">
+								<div class="banner-info_agile_w3ls">
+									<h2>永琪美容美发经营管理有限公司</h2>
+									<p>是一家集美容美发、形象设计、美体塑身、养生保健、产品开发、教育培训、市场营销为一体的全国大型综合性美容美发专业连锁机构.</p>
+									<a href="{{ url_for('user.aboutyq') }}" class="mr-2">查看详情 <i class="fa fa-caret-right" aria-hidden="true"></i></a>
+								</div>
+							</div>
+						</div>
+						</div>
+					</li>
+					<li>
+						<div class="banner-top1">
+						<div class="layer">
+							<div class="container">
+								<div class="banner-info_agile_w3ls">
+									<h3>为什么明星染了100次头发，发质还那么好？</h3>
+									<p>染发一直是转变形象最快速的方法之一，无论是时髦的年轻人还是步入中年的父母辈，都会用染发来改变形象。</p>
+									<a href="{{ url_for('user.aboutmx') }}" class="mr-2">查看详情 <i class="fa fa-caret-right" aria-hidden="true"></i></a>
+								</div>
+							</div>
+						</div>
+						</div>
+					</li>
+					<li>
+						<div class="banner-top2">
+						<div class="layer">
+							<div class="container">
+								<div class="banner-info_agile_w3ls">
+									<h3>优质服务 放心消费</h3>
+									<p>永琪荣获《2018预付卡“放心消费”品牌企业》荣誉奖!</p>
+									<a href="{{ url_for('user.huojiang') }}" class="mr-2">查看详情 <i class="fa fa-caret-right" aria-hidden="true"></i></a>
+								</div>
+							</div>
+						</div>
+						</div>
+					</li>
+					<li>
+						<div class="banner-top3">
+						<div class="layer">
+							<div class="container">
+								<div class="banner-info_agile_w3ls">
+									<h3>中国“美容”发展简史</h3>
+									<p>随着人类社会的进步的进程，美容从形式到内容也在不断的发展变化，美容的发展历史.</p>
+									<a href="{{ url_for('user.qiyuan') }}" class="mr-2">查看详情 <i class="fa fa-caret-right" aria-hidden="true"></i></a>
+								</div>
+							</div>
+						</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+		<!-- Social Icons -->
+		<div class="w3_agileits_social_media">
+			<ul>
+				<li><a href="#" class="wthree_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+				<li><a href="#" class="wthree_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+				<li><a href="#" class="wthree_dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+				<li><a href="#" class="wthree_behance"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+			</ul>
+		</div>
+		<!-- //Social Icons -->
+
+			<p class="ab">connect with us</p>
+
+		<!-- To bottom button-->
+		<div class="thim-click-to-bottom">
+			<div class="rotate">
+				<a href="#booking" class="scroll">
+					<i class="fa fa-ellipsis-v"></i>
+				</a>
+			</div>
+		</div>
+		<!-- //To bottom button-->
+		</div>
 {% block mainpage  %}
 
 {% endblock  %}
 
-<script>
-    var find = document.getElementById('find');
-    var lis = find.getElementsByTagName('li');
-    var i;
-    for (i=0;i<lis.length;i++) {
-        lis[i].onclick = function () {
-          for (var j=0;j<lis.length;j++) {
-          lis[j].className = '';
-          }
-         this.className = 'active';
-        }
-    }
 
-</script>
+<footer class="py-5">
+	<div class="container py-md-3">
+		<div class="row footer-grids pb-md-5 pb-3">
+			<div class="col-md-3 col-sm-6 col-6">
+				<a href="#"> <i class="fa fa-phone"></i>Call Us</a>
+			</div>
+			<div class="col-md-3 col-sm-6 col-6">
+				<a href="#"> <i class="fa fa-envelope"></i>Send Message</a>
+			</div>
+			<div class="col-md-3 col-sm-6 col-6 mt-md-0 mt-2">
+				<a href="#"> <i class="fa fa-skype"></i>Skype Call</a>
+			</div>
+			<div class="col-md-3 col-sm-6 col-6 mt-md-0 mt-2">
+				<a href="#"> <i class="fa fa-comment"></i>Online Chat</a>
+			</div>
+		</div>
+
+		<div class="subscribe-grid text-center">
+			<p class="para three mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at placerat ante. Praesent nulla nunc, pretium dapibus efficitur in, auctor eget elit. Lorem ipsum dolor sit amet </p>
+			<h5>Subscribe for our latest updates</h5>
+			<p>Get
+				<span>10%</span> off on booking</p>
+			<form action="#" method="post">
+				<input class="form-control" type="email" placeholder="Subscribe" name="Subscribe" required="">
+				<button class="btn1">
+					<i class="fa fa-paper-plane"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+</footer>
+
+
+<section class="copyright py-4 text-center">
+	<div class="container">
+		<p>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+	</div>
+</section>
+
+	<script type="text/javascript" src="{{ url_for('static',filename='js/jquery-2.2.3.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.js') }}"></script> <!-- Necessary-JavaScript-File-For-Bootstrap -->
+
+	<script src="{{ url_for('static',filename='js/jquery.desoslide.js') }}"></script>
+	<script>
+		$('#demo1_thumbs').desoSlide({
+			main: {
+				container: '#demo1_main_image',
+				cssClass: 'img-responsive'
+			},
+			effect: 'sideFade',
+			caption: true
+		});
+	</script>
+
+		<script src="{{ url_for('static',filename='js/jquery-ui.js') }}"></script>
+		<script>
+			$(function() {
+				$( "#datepicker,#datepicker1" ).datepicker();
+			});
+		</script>
+
+	<script src="{{ url_for('static',filename='js/responsiveslides.min.js') }}"></script>
+	<script>
+		$(function () {
+			$("#slider4").responsiveSlides({
+				auto: true,
+				pager: true,
+				nav: true,
+				speed: 1000,
+				namespace: "callbacks",
+				before: function () {
+					$('.events').append("<li>before event fired.</li>");
+				},
+				after: function () {
+					$('.events').append("<li>after event fired.</li>");
+				}
+			});
+		});
+	</script>
+
+	<script src="{{ url_for('static',filename='js/jquery.magnific-popup.js') }}"></script>
+	<script>
+		$(document).ready(function () {
+			$('.popup-with-zoom-anim').magnificPopup({
+				type: 'inline',
+				fixedContentPos: false,
+				fixedBgPos: true,
+				overflowY: 'auto',
+				closeBtnInside: true,
+				preloader: false,
+				midClick: true,
+				removalDelay: 300,
+				mainClass: 'my-mfp-zoom-in'
+			});
+		});
+	</script>
+
+
+	<script src="{{ url_for('static',filename='js/SmoothScroll.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='js/move-top.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='js/easing.js') }}"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+			});
+	</script>
 
 </body>
 </html>

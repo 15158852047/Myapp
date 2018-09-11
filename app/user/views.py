@@ -7,6 +7,24 @@ from ..models import db
 def index():
     return render_template('Main.html')
 
+@user.route('/aboutyq')
+def aboutyq():
+    return render_template('aboutyq.html')
+
+@user.route('/huojiang')
+def huojiang():
+    return render_template('huojiang.html')
+
+@user.route('/qiyuan')
+def qiyuan():
+    return render_template('lishi.html')
+
+
+@user.route('/aboutmx')
+def aboutmx():
+    return render_template('aboutmx.html')
+
+
 @user.route('/login/',methods=['GET','POST'])
 def login():
     if request.method  == 'POST':
@@ -44,7 +62,7 @@ def regist():
                 if tele:
                     flash('改电话号码已经注册!')
                 else:
-                    add = User(username=username,password=pass1,tel=tel,birth=birth,name=name,money=0,jifen=0)
+                    add = User(username=username,password=pass1,tel=tel,birth=birth,name=name,money=0,jifen=0,Role=1)
                     db.session.add(add)
                     db.session.commit()
                     return redirect(url_for('user.login'))
