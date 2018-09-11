@@ -8,7 +8,8 @@
 
 {% block main %}
 <div>
-
+	<br><br>
+<h3> 当前第{{ x }}页</h3>
 <table border="1" width="815" style="border-width: 0px" height="560">
 <tr>
 <td style="border-style: none; border-width: medium" height="500" width="809" align="center">　
@@ -26,7 +27,7 @@
 			<li>总积分：{{ user.jifen }}</li>
 			<li>身份:{% if user.Role==0 %} 管理员 {% else %}用户 {% endif %}</li>
 			<li></li>
-			<li><a href="" class="buy_now">修改信息</a></li>
+			<li><a href="{{url_for('admin.upfor',name=user.id)}}" class="buy_now">修改信息</a></li>
 		</ul>
 
 	{% endfor  %}
@@ -46,7 +47,7 @@
 	{% if (i+1) == x %}
 	<li><a  href=" {{ url_for('admin.main',myid=i+1) }}" class="active">{{i+1}}</a></li>
 	{% else %}
-	<li><a  href=" {{ url_for('admin.main',myid=i+1) }}">{{i+1}}</a></li>
+	<li><a  href=" {{ url_for('admin.main',myid=i+1) }}" >{{i+1}}</a></li>
 	{% endif %}
 	{% endfor %}
 </ul>

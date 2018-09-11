@@ -1,0 +1,138 @@
+{% extends 'admin/base.html' %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='admin/core.css') }}">
+    <script type="text/javascript">
+jQuery(document).ready(function(){
+
+	  //download script
+	  jQuery('.s_download').on("click", function(e) {
+			var semail = jQuery("#itzurkarthi_email").val();
+			if(semail == '')
+			{
+				alert('Enter Email');
+				return false;
+			}
+			var str = "sub_email="+semail
+			jQuery.ajax({
+				type: "POST",
+				url: "download.php",
+				data: str,
+				cache: false,
+				success: function(htmld){
+						jQuery('#down_update').html(htmld);
+				}
+			});
+	  });
+});
+</script>
+</head>
+
+<style>
+	#searchform { float:left; margin-left:20px; margin:9px 0px 0px; padding:0px; }
+	#searchform fieldset { padding:0px; border:none; margin:0px; }
+	#searchform input[type="text"] {
+		background:#e8e8e8;
+		border:none;
+		float:left;
+		padding:0px 10px 0px 15px;
+		margin:0px;
+		width:200px;
+		height:38px;
+		line-height:38px;
+		transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+		-moz-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+		-webkit-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+		-o-transition:all 300ms cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+		color:#585858;
+	}
+	#searchform input[type="text"]:hover, #searchform input[type="text"]:focus { width:300px; }
+	#searchform input[type="submit"] { background:url('{{ url_for('static',filename='admin/img/icon-search.png') }}') center 11px no-repeat; cursor:pointer; margin:0px; padding:0px; width:37px; height:38px; line-height:38px; }
+
+	input[type="submit"] { padding:4px 17px; color:#ffffcolor:#585858; ff; text-transform:uppercase; border:none; font-size:20px; background:url('{{ url_for('static',filename='admin/img/gradient.png') }}') bottom repeat-x; cursor:pointer; margin-top:10px; float:left; overflow:visible; transition: all .3s linear; -moz-transition: all .3s linear; -o-transition: all .3s linear; -webkit-transition: all .3s linear; }
+
+	#searchform input[type="submit"]:hover { background-color:#333232; }
+	.style_1 #searchform input[type='submit'] { background-color:#25ade4; }
+	.style_1{
+        padding-top: 100px;
+        margin:0 0 0 500px;
+        display:block;
+        clear:both
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+    <div class="style_1">
+		<form method="get" id="searchform" action="http://sc.chinaz.com/">
+			<fieldset>
+			<input id="s" name="s" type="text" placeholder="输入您要查询的会员信息" class="text_input"  />
+			<input name="submit" type="submit" value /> </fieldset>
+		</form>
+	</div>
+
+<script >
+    var s = document.getElementById('s')
+    s.onkeyup = function () {
+        n = s.value
+        $.ajax({
+            url:"{{ url_for('admin.mohu') }}",
+            type:"POST",
+            data:{'mydata':n},
+            datatype:'json',
+
+
+            success:function(data){
+             var p = document.getElementById('myid')
+             if (p != undefined) {
+                p.parentNode.removeChild(p);
+             }
+             var count = data[0];
+             alert(JSON.stringify(data));
+             var div = document.createElement('div');
+             var pa = document.getElementById('page-wrapper')
+             div.className = 'pricing_table';
+             div.id = 'myid';
+             pa.appendChild(div)
+             for (var i =0; i<count;i++) {
+                 var ul = document.createElement('ul')
+                 div.appendChild(ul)
+                    alert(data0);
+                 var li = document.createElement('li')
+                 li.innerText ='账号：'+ data[i].username
+                 ul.appendChild(li)
+
+                 li = document.createElement('li')
+                 li.innerText ='密码：'+ data[i].password
+                 ul.appendChild(li)
+
+                 li = document.createElement('li')
+                 li.innerText ='用户名：' + data[i].name
+                 ul.appendChild(li)
+
+                 li = document.createElement('li')
+                 li.innerText ='电话:'+ data[i].tel
+                 ul.appendChild(li)
+
+                 li = document.createElement('li')
+                 li.innerText ='生日：'+ data[i].birth
+                 ul.appendChild(li)
+
+                 li = document.createElement('li')
+                 if (data[i].Role == 1) {
+                     li.innerText = '身份：用户'
+                 }
+                 else {
+                     li.innerText = '身份：管理员'
+                 }
+                 ul.appendChild(li)
+             }
+
+        }
+        })
+    }
+
+</script>
+{% endblock %}
+

@@ -15,6 +15,12 @@ class User(db.Model):
     money1 = db.relationship('Money', backref=db.backref('users'))
     message = db.relationship('Message', backref=db.backref('users'))
 
+    def to_json(self):
+        dict = self.__dict__
+        if "_sa_instance_state" in dict:
+            del dict["_sa_instance_state"]
+        return dict
+
 
 class Message(db.Model):
     __tablename__ = 'messages'
