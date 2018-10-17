@@ -31,6 +31,7 @@
 	min-height: 780px;
 }
 
+
 @font-face {
   font-family: 'FontAwesome';
   src: url('{{ url_for('static',filename='fonts/fontawesome-webfont.eot?v=4.6.3') }}');
@@ -171,7 +172,7 @@ section.middle-sec-agileinfo-w3ls{
 				<p><i class="fa fa-phone" aria-hidden="true"></i> Call us : +18044261149 </p>
 			</div>
 			<div class="col-md-7 top-right p-0">
-				<p><i class="fa fa-map-marker" aria-hidden="true"></i> Australian Travel Agency, Ravish NSW, Australia.
+				<p><i class="fa fa-map-marker" aria-hidden="true"></i>永琪美发店官网   中国上海
 			</div>
 		</div>
 
@@ -194,17 +195,17 @@ section.middle-sec-agileinfo-w3ls{
 						<a class="nav-link" href="services.html">Services</a>
 					</li>
 
-					{% if user %}
+					{% if users %}
 					<li class="dropdown nav-item">
-						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">{{ user.name }}
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">{{ users.name }}
 							<b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu agile_short_dropdown">
 							<li>
-								<a href="pricing.html">Pricing Plans</a>
+								<a href="pricing.html">我的订单</a>
 							</li>
 							<li>
-								<a href="about.html">About Page</a>
+								<a href="about.html">我的购物车</a>
 							</li>
 						</ul>
 					</li>
@@ -286,18 +287,6 @@ section.middle-sec-agileinfo-w3ls{
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
-		<!-- Social Icons -->
-		<div class="w3_agileits_social_media">
-			<ul>
-				<li><a href="#" class="wthree_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-				<li><a href="#" class="wthree_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-				<li><a href="#" class="wthree_dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-				<li><a href="#" class="wthree_behance"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
-			</ul>
-		</div>
-		<!-- //Social Icons -->
-
-			<p class="ab">connect with us</p>
 
 		<!-- To bottom button-->
 		<div class="thim-click-to-bottom">
@@ -309,6 +298,7 @@ section.middle-sec-agileinfo-w3ls{
 		</div>
 		<!-- //To bottom button-->
 		</div>
+ </div>
 {% block mainpage  %}
 
 {% endblock  %}
@@ -349,7 +339,7 @@ section.middle-sec-agileinfo-w3ls{
 
 <section class="copyright py-4 text-center">
 	<div class="container">
-		<p>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+		<p>Copyright Yongqi &copy; 2018.Company name All rights reserved.</p>
 	</div>
 </section>
 
