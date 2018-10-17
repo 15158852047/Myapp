@@ -1,0 +1,34 @@
+{% extends 'admin/base.html'  %}
+
+{% block head %}
+ <style>
+     .Myproduct {
+         text-align: center;
+         width: 150px;
+         float: left;
+         border:1px solid #000
+     }
+     .cont{
+      float: left;
+      margin: 80px 0 0 100px;
+      width: 700px;
+     }
+ </style>
+{% endblock %}
+
+{% block main %}
+<div class="cont">
+ {% for i in product  %}
+<div class="Myproduct">
+<img src="{{ url_for('static',filename='admin/image/%s.png' % i.name) }}" width="100px">
+<h5> 名称：</h5> <h3> {{ i.name }} </h3>
+<h5> 价格：</h5> <p> {{ i.money }}    元</p>
+<h5> 库存：</h5> <p> {{ i.have }}  件  </p>
+ <h5> 详细信息：</h5> <p> {{ i.Info }}  </p>
+ <h5> 类别：</h5> <p> {{ i.zhonglei }} </p>
+ <p><a href="{{ url_for('admin.delpro',name= i.name) }}">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ url_for('admin.uppro',name=i.name) }}">修改</a></p>
+</div>
+{% endfor %}
+
+ </div>
+{% endblock %}

@@ -1,51 +1,53 @@
-from app import db
 from datetime import datetime
+from app import db
 
-class User(db.Model):
-    __tablename__ = 'users'
-    id = db.Column(db.Integer,primary_key=True,autoincrement=True)
-    username = db.Column(db.String(30),nullable=False,unique=True)
-    password = db.Column(db.String(30),nullable=False)
-    name = db.Column(db.String(60))
-    tel = db.Column(db.String(15),unique=True)
-    birth = db.Column(db.String(10))
-    money = db.Column(db.Integer)
-    jifen = db.Column(db.Integer)
-    Role = db.Column(db.Integer,default=1)#0代表管理员，1会员
-    money1 = db.relationship('Money', backref=db.backref('users'))
-    message = db.relationship('Message', backref=db.backref('users'))
+class User(db.Document):
+    username = db.StringField()
+    password = db.StringField()
+    name = db.StringField()
+    tel = db.StringField()
+    birth = db.StringField()
+    money = db.IntField()
+    jifen = db.IntField()
+    Role = db.IntField()
 
-    def to_json(self):
-        dict = self.__dict__
-        if "_sa_instance_state" in dict:
-            del dict["_sa_instance_state"]
-        return dict
+class Message(db.Document):
+    addTime = db.DateTimeField(default=datetime.now())
+    info = db.StringField()
+    isRead = db.IntField(default=0)
 
-
-class Message(db.Model):
-    __tablename__ = 'messages'
-    id = db.Column(db.Integer,primary_key=True,autoincrement=True)
-    addtime = db.Column(db.DateTime,default=datetime.now())
-    title = db.Column(db.String(200))
-    info = db.Column(db.Text)
-    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-
-class Money(db.Model):
-    __tablename__ = 'money'
-    id = db.Column(db.Integer,primary_key=True,autoincrement=True)
-    money = db.Column(db.Integer)
-    jifen = db.Column(db.Integer)
-    payfor = db.Column(db.String(100))
-    addtime = db.Column(db.DateTime,default=datetime.now())
-    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+class Money(db.Document):
+    money = db.IntField()
+    jifen = db.IntField()
+    payfor = db.StringField()
+    addtime = db.DateTimeField(default=datetime.now())
 
 
+class Product(db.Document):
+    name = db.StringField()
+    money = db.IntField()
+    Info = db.StringField()
+    have = db.IntField()#库存
+    image = db.FileField()
+    zhonglei = db.StringField()
 
-class Product(db.Model):
-    __tablename__ = 'produces'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(30),nullable=False)
-    money = db.Column(db.Integer)
-    Info = db.Column(db.String(200))
-    have = db.Column(db.Integer)
-    image = db.Column(db.String(50))
+
+class BuyCar(db.Document):#购物车
+    ProdName = db.StringField()#物品名字
+    Price = db.IntField()#价格
+    Num = db.IntField()#数量
+    AllPrice = db.IntField()#总价
+    addTime = db.DateTimeField(default=datetime.now())#添加时间
+    image = db.FileField()#物品的图片
+    bname = db.StringField()
+
+
+class Order(db.Document):#订单
+    ProdName = db.StringField()
+    Price = db.IntField()
+    Num = db.IntField()
+    AllPrice = db.IntField()
+    addTime = db.DateTimeField(default=datetime.now())
+    image = db.FileField()
+    isRead = db.IntField()#0表示未读订单   1表示已读
+    oname = db.StringField()

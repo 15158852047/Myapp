@@ -1,11 +1,16 @@
 from flask import render_template,request,flash,redirect,url_for,session
 from . import user
-from ..models import User
+from ..models import User,Product,Order,BuyCar
 from ..models import db
 
 @user.route('/')
 def index():
-    return render_template('Main.html')
+    products = Product.objects().limit(3)
+    for i in products:
+        f = open('app/static/image/%s.png' % i.name,'wb')
+        f.write(i.image.read())
+        f.close()
+    return render_template('Main.html',products=products)
 
 @user.route('/aboutyq')
 def aboutyq():
@@ -30,9 +35,9 @@ def login():
     if request.method  == 'POST':
         name = request.form.get('name')
         pass1 = request.form.get('pass')
-        use = User.query.filter_by(username=name,password=pass1).first()
+        use = User.objects(username=name,password=pass1).first()
         if use:
-            session['user_id'] = use.id
+            session['user_id'] = use.name
             session.permanet = True
             return  redirect(url_for('user.index'))
         else:
@@ -54,19 +59,39 @@ def regist():
         if pass1 != pass2 :
             flash('两次密码不一致，请重新填写')
         else:
-            use = User.query.filter_by(username=username).first()
+            use = User.objects(username=username).first()
             if use :
                 flash('该用户已经存在！')
             else:
-                tele = User.query.filter_by(tel=tel).first()
+                tele = User.objects(tel=tel).first()
                 if tele:
                     flash('改电话号码已经注册!')
                 else:
                     add = User(username=username,password=pass1,tel=tel,birth=birth,name=name,money=0,jifen=0,Role=1)
-                    db.session.add(add)
-                    db.session.commit()
+                    add.save()
                     return redirect(url_for('user.login'))
     return render_template('regist.html')
+
+
+
+@user.route('/addCar/')
+def addCar():
+    car = BuyCar(ProdName=request.form.get('name'),Price=request.form.get('money'),Num=request.form.get('count'),
+                AllPrice=request.form.get('allmoney'),bname=session.get('user_id'))
+    f = open('app/static/admin/image/%s.png' % request.form.get('name'), 'wb')
+    car.image.put(f)
+    car.save()
+    return redirect(url_for('user.Car'))
+
+
+@user.route('/Car/<name>')
+def Car(name):
+    cars =  BuyCar.objects(name=name).all()
+    for car in cars :
+        f = open('app/static/image/%s.png' % car.name,'wb')
+        f.write(car.image.read())
+        f.close()
+    return render_template('car.html',cars=cars)
 
 
 
@@ -76,12 +101,29 @@ def logout():
     return redirect(url_for('Main.index'))
 
 
+@user.route('/proinfo/<name>')
+def proinfo(name):
+    pro = Product.objects(name=name).first()
+    return render_template('proinfo.html',pro=pro,name=session.get('user_id'))
+
+
+@user.route('/addorder/',methods=['POST','GET'])
+def addorder():
+    s = request.form.get('name').strip()
+    add = Order(ProdName=s,Price=request.form.get('money').strip(),Num=request.form.get('count').strip(),
+                AllPrice=request.form.get('allmoney').strip(),isRead=0,oname=session.get('user_id'))
+    f = open('app/static/admin/image/%s.png' % s, 'rb')
+    add.image.put(f.read())
+    f.close()
+    add.save()
+    return render_template('success.html')
+
 
 @user.context_processor
 def session_context():
     user_id = session.get('user_id')
     if user_id :
-        user = User.query.filter_by(id=user_id).first()
+        user = User.objects(name=user_id).first()
         if user:
-            return {'user':user}
+            return {'users':user}
     return {}

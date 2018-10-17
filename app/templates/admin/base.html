@@ -50,7 +50,13 @@
 				<li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown4"><i class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
 				<li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
 				<li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
-				  <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>John Doe</b> <i class="material-icons right">arrow_drop_down</i></a></li>
+				  <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>
+                     {% if user %}
+                      {{ user.name }}
+                      {% else %}
+                      请登录
+                      {% endif %}
+                  </b> <i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
         </nav>
 		<!-- Dropdown Structure -->
@@ -191,6 +197,7 @@
                         <li class="divider"></li>
                         <li>
                                 <div>
+
                                     <strong>John Smith</strong>
                                     <span class="pull-right text-muted">
                                         <em>Yesterday</em>
@@ -239,13 +246,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> UI Elements</a>
+                        <a href="{{ url_for('admin.lookorder') }} " class="waves-effect waves-dark"><i class="fa fa-desktop"></i>订单查看</a>
                     </li>
 					<li>
-                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> Charts</a>
+                        <a href="{{ url_for('admin.product') }}" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i>商品查看</a>
                     </li>
                     <li>
-                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i> Tabs & Panels</a>
+                        <a href="{{ url_for('admin.addpro') }}" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i> 商品添加</a>
                     </li>
 
                     <li>

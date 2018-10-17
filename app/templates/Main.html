@@ -143,52 +143,29 @@
 <!-- /services -->
 <section class="featured_services py-5">
 	<div class="container py-3">
-		<h3 class="heading text-center mb-5">Our Services</h3>
+		<h3 class="heading text-center mb-5">我们的产品</h3>
 		<div class="row agile_inner_info">
+
+			{% for i in products %}
 			<div class="col-lg-4 col-md-6 w3_agile_services_grid">
 				<div class="agile_services_grid">
 					<div class="hover06 column">
 						<div>
-							<figure><img src="{{ url_for('static',filename='images/images/s1.jpg') }}" alt=" " class="img-responsive"></figure>
+							<figure><img src="{{ url_for('static',filename='image/%s.png' % i.name) }}" alt="" class="img-responsive" width="200px" height="200px"></figure>
 						</div>
 					</div>
 					<div class="agile_services_grid_pos">
 						<i class="fa fa-globe" aria-hidden="true"></i>
 					</div>
 				</div>
-				<h4>Tempus eu turpis</h4>
-				<p>Lorem ipsum dolor sit amet, do eiusmod tempor incididunt .Aliquam lacus turpis.</p>
+				<h4><a href="{{ url_for('user.proinfo',name=i.name) }}">{{ i.name }}</a></h4>   <p> {{ i.money }}元</p>
+				<p>{{ i.Info }}</p>
 			</div>
-			<div class="col-lg-4 col-md-6 mt-md-0 mt-5 w3_agile_services_grid">
-				<div class="agile_services_grid">
-					<div class="hover06 column">
-						<div>
-							<figure><img src="{{ url_for('static',filename='images/images/s2.jpg') }}" alt=" " class="img-responsive"></figure>
-						</div>
-					</div>
-					<div class="agile_services_grid_pos">
-						<i class="fa fa-suitcase" aria-hidden="true"></i>
-					</div>
-				</div>
-				<h4>Lobortis quis dolor</h4>
-				<p>Lorem ipsum dolor sit amet, do eiusmod tempor incididunt .Aliquam lacus turpis.</p>
-			</div>
-			<div class="col-lg-4 col-md-6 mt-lg-0 mt-5 w3_agile_services_grid">
-				<div class="agile_services_grid">
-					<div class="hover06 column">
-						<div>
-							<figure><img src="{{ url_for('static',filename='images/images/s3.jpg') }}" alt=" " class="img-responsive"></figure>
-						</div>
-					</div>
-					<div class="agile_services_grid_pos">
-						<i class="fa fa-bed" aria-hidden="true"></i>
-					</div>
-				</div>
-				<h4>Dignissim rhoncus</h4>
-				<p>Lorem ipsum dolor sit amet, do eiusmod tempor incididunt .Aliquam lacus turpis.</p>
-			</div>
+			{% endfor %}
+
+
 			<div class="mx-auto mt-lg-4 mt-5 text-center">
-				<a href="#">Explore all Services</a>
+				<a href="#">查看更多</a>
 			</div>
 		</div>
 	</div>

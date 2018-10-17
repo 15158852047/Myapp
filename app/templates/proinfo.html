@@ -1,0 +1,120 @@
+{% extends 'index.html'  %}
+
+
+{% block title%}
+       详细信息
+{% endblock %}
+
+
+{% block head %}
+<style>
+    .imgdiv{
+        float: left;
+        width: 300px;
+        margin: 100px 0 0 200px ;
+    }
+    .infodiv{
+       float: left;
+        margin-left:  100px;
+        width: 300px ;
+    }
+    #promain{
+        height: 500px;
+        width: 1000px;
+    }
+    .sub{
+        float: left;
+        background: #FFCDD2;
+        text-align: center;
+    }
+    .count{
+        width: 50px ;
+    }
+    #mmm{
+        margin-left: 30px;
+    }
+    #form1{
+        margin-top: 80px;
+    }
+    input{
+        border: none;
+        background-color: transparent;
+    }
+    #title{
+        text-align: center;
+    }
+</style>
+{% endblock  %}
+
+
+{% block mainpage  %}
+<div id="promain">
+<div class="imgdiv">
+<img src="{{ url_for('static',filename='image/%s.png' % pro.name) }}" width="300px" height="300px">
+</div>
+<div class="infodiv">
+
+<form method="post" action="" id="form1" name="form1">
+<h2> <input type="text" name="name" value=" {{ pro.name }}"  id="title"></h2><br>
+价格：<input type="text" name="money" value=" {{ pro.money }}" ><br>
+介绍：<input type="text" name="Info" value=" {{ pro.Info }}" ><br>
+种类：<input type="text" name="zhonglei" value=" {{ pro.zhonglei }}" ><br>
+
+  <p>购买数量：</p>
+    <div><input type="text" name="count" class="count" id="buycount" value="0" > / <input type="text" class="count" value=" {{ pro.have }}" id="allcount">  </div>
+    <div>总共需要: <input type="text" id="allmoney" name="allmoney">元</div>
+    <div><input type="submit" class="sub"  value="购买产品" onclick="buy()">
+        <input type="submit" class="sub" id="mmm"  value="加入购物车" onclick="addcar()"></div>
+</form>
+</div>
+</div>
+
+
+<script>
+    var buycount = document.getElementById('buycount');
+
+     buycount.onkeyup = function () {
+         var allmoney = document.getElementById('allmoney');
+        var bc = this.value;
+        if (parseInt(bc) == NaN){
+            alert('必须输入一个整数!!');
+            buycount.setAttribute('value','');
+        }else{
+            var allcount = document.getElementById('allcount');
+            ac = allcount.value;
+            if ((parseInt(bc))>(parseInt(ac))){
+                alert('购买数量必须小于库存!');
+                buycount.value = 0;
+                allmoney.value = 0;
+            }else{
+                var s = {{ pro.money }};
+                allmoney.value = (parseInt(s)*parseInt(bc));
+            }
+        }
+    }
+</script>
+<script>
+    function buy() {
+        {% if users %}
+        document.form1.action = "{{ url_for('user.addorder') }}";
+        document.form1.submit();
+        {%  else %}
+        alert('必须先登录才能进行该操作!');
+        document.form1.method ="get";
+        document.form1.action = "{{ url_for('user.login')  }}";
+        document.form1.submit();
+        {% endif %}
+    }
+    function addcar() {
+        {% if users %}
+        document.form1.action = "{{ url_for('user.addCar')  }}";
+        document.form1.submit();
+        {%  else %}
+        alert('必须先登录才能进行该操作!');
+        document.form1.method ="get";
+        document.form1.action = "{{ url_for('user.login')  }}";
+        document.form1.submit();
+        {% endif %}
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'admin/base.html'  %}
+
+{% block head %}
+<style>
+    .addpro{
+        float:left;
+        display:inline;
+        margin:100px 0 0 350px;
+        width: 500px;
+        text-align: center;
+     }
+</style>
+
+{% endblock %}
+
+
+{%  block main %}
+<div class="addpro">
+<form enctype='multipart/form-data' method='POST'>
+    <p>名   称:</p><input type="text" name="name" value="{{ pro.name }}">
+    <p>价   格:</p><input type="text" name="money" value="{{ pro.money }}" >
+    <p>详细信息:</p><input type="text" name="Info"  value="{{ pro.Info }}">
+    <p>库   存:</p><input type="text" name="kucun"  value="{{ pro.have }}">
+    <p>类   别:</p><input type="text" name="zhonglei" value="{{ pro.zhonglei }}">
+    <img src="{{ url_for('static',filename='admin/image/%s.png' % pro.name) }}">
+    <input type="file" name="file">
+    <input type="submit" value="修改">
+</form>
+</div>
+{%  endblock  %}

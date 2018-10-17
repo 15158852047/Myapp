@@ -1,0 +1,191 @@
+{% extends 'admin/base.html' %}
+
+{% block head %}
+<style type="text/css">
+    .Mytableo {
+        width:500px;
+        margin:0 auto;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+{% endblock  %}
+
+
+
+{% block main %}
+<br><br>
+<h3>订单界面：</h3>
+<br><br>
+<div class="Mytableo" style="overflow-y:auto; overflow-x:hidden; height:500px;" id="mmmm">
+<table class="table table-hover" id ='tb'>
+    <thead>
+    <th>111</th>
+      <th>111</th>
+      <th>111</th>
+      <th>111</th>
+      <th>111</th>
+    </thead>
+    <tbody id="table">
+  <tr>
+      <td><b>111</b></td>
+      <td>111</td>
+      <td>111</td>
+      <td>111</td>
+      <td>111</td>
+  </tr>
+  <tr>
+      <td><b>222</b></td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+  </tr>
+<tr>
+      <td><b>222</b></td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+  </tr>
+    <tr>
+      <td><b>222</b></td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+  </tr>
+    <tr>
+      <td><b>222</b></td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+  </tr>
+    <tr>
+      <td><b>222</b></td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+  </tr>
+   <tr>
+      <td><b>222</b></td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+  </tr>
+    <tr>
+      <td><b>222</b></td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+  </tr>
+<tr>
+      <td><b>222</b></td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+  </tr>
+    <tr>
+      <td><b>222</b></td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+  </tr>
+    <tr>
+      <td><b>222</b></td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+  </tr>
+    <tr>
+      <td><b>222</b></td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+  </tr>
+    <tr>
+      <td><b>222</b></td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+  </tr>
+    <tr>
+      <td><b>222</b></td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+  </tr>
+    <tr>
+      <td><b>222</b></td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+  </tr>
+
+    <tr>
+      <td><b>222</b></td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+      <td>222</td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+
+
+  <script language="javascript">
+      var a = 0;
+   $("#mmmm").scroll(function(){
+        var h = $(this).height();//div可视区域的高度
+        var sh = $(this)[0].scrollHeight;//滚动的高度，$(this)指代jQuery对象，而$(this)[0]指代的是dom节点
+        var st =$(this)[0].scrollTop;//滚动条的高度，即滚动条的当前位置到div顶部的距离
+        if(h+st>=sh){
+        //上面的代码是判断滚动条滑到底部的代码
+            a = a+1;
+            if (a>5) {
+              var tr = document.createElement('tr');
+              var td  = document.createElement('td');
+               var table = document.getElementById('table')
+              td.innerHTML = '已经是最后一页了!';
+              td.setAttribute('colspan',"5");
+              var tb = document.getElementById('tb')
+                tb.appendChild(tr);
+              tr.appendChild(td);
+            }
+            else{
+            var tr = document.createElement('tr');
+            var td1 = document.createElement('td');
+            var td2 = document.createElement('td');
+            var td3 = document.createElement('td');
+            var td4 = document.createElement('td');
+            var td5 = document.createElement('td');
+            td1.innerHTML = '333';
+            td2.innerHTML = '333';
+            td3.innerHTML = '333';
+            td4.innerHTML = '333';
+            td5.innerHTML = '333';
+            var table = document.getElementById('table')
+            table.appendChild(tr)
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tr.appendChild(td4);
+            tr.appendChild(td5);
+            }
+
+        }
+    })
+     </script>
+{% endblock %}

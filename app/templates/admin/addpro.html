@@ -1,0 +1,29 @@
+{% extends 'admin/base.html'  %}
+
+{% block head %}
+<style>
+    .addpro{
+        float:left;
+        display:inline;
+        margin:100px 0 0 350px;
+        width: 500px;
+        text-align: center;
+     }
+</style>
+
+{% endblock %}
+
+
+{%  block main %}
+<div class="addpro">
+<form enctype='multipart/form-data' method='POST'>
+    <p>名   称:</p><input type="text" name="name">
+    <p>价   格:</p><input type="text" name="money" >
+    <p>详细信息:</p><input type="text" name="Info">
+    <p>库   存:</p><input type="text" name="kucun">
+    <p>类   别:</p><input type="text" name="zhonglei">
+    <input type="file" name="file">
+    <input type="submit" value="上传">
+</form>
+</div>
+{%  endblock  %}

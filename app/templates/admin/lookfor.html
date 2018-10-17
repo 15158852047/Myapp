@@ -27,7 +27,7 @@ jQuery(document).ready(function(){
 	  });
 });
 </script>
-</head>
+
 
 <style>
 	#searchform { float:left; margin-left:20px; margin:9px 0px 0px; padding:0px; }
@@ -60,21 +60,28 @@ jQuery(document).ready(function(){
         display:block;
         clear:both
     }
+	#result1{
+		position: absolute;
+		margin: 150px 0 0 200px;
+	}
 </style>
 {% endblock %}
 
 {% block main %}
     <div class="style_1">
-		<form method="get" id="searchform" action="http://sc.chinaz.com/">
+		<form method="get" id="searchform" action="">
 			<fieldset>
 			<input id="s" name="s" type="text" placeholder="输入您要查询的会员信息" class="text_input"  />
 			<input name="submit" type="submit" value /> </fieldset>
 		</form>
 	</div>
+<div id = 'result1'>
+
+</div>
 
 <script >
     var s = document.getElementById('s')
-    s.onkeyup = function () {
+    s.oninput = function () {
         n = s.value
         $.ajax({
             url:"{{ url_for('admin.mohu') }}",
@@ -82,54 +89,62 @@ jQuery(document).ready(function(){
             data:{'mydata':n},
             datatype:'json',
 
+            success:function(data) {
 
-            success:function(data){
-             var p = document.getElementById('myid')
-             if (p != undefined) {
-                p.parentNode.removeChild(p);
-             }
-             var count = data[0];
-             alert(JSON.stringify(data));
-             var div = document.createElement('div');
-             var pa = document.getElementById('page-wrapper')
-             div.className = 'pricing_table';
-             div.id = 'myid';
-             pa.appendChild(div)
-             for (var i =0; i<count;i++) {
-                 var ul = document.createElement('ul')
-                 div.appendChild(ul)
-                    alert(data0);
-                 var li = document.createElement('li')
-                 li.innerText ='账号：'+ data[i].username
-                 ul.appendChild(li)
+                var p = document.getElementById('myid');
+                if (p != undefined) {
+                    p.parentNode.removeChild(p);
+                }
+              if (data.length != 0) {
+                var div = document.createElement('div');
+                var pa = document.getElementById('result1')
+                div.className = 'pricing_table';
+                div.id = 'myid';
+                pa.appendChild(div)
+                    for (var i = 0; i < data.length; i++) {
+ 						var ul = document.createElement('ul')
+               			div.appendChild(ul)
 
-                 li = document.createElement('li')
-                 li.innerText ='密码：'+ data[i].password
-                 ul.appendChild(li)
+                        var li = document.createElement('li');
+                        li.innerHTML = '账号：' + data[i].uname;
+                        ul.appendChild(li);
 
-                 li = document.createElement('li')
-                 li.innerText ='用户名：' + data[i].name
-                 ul.appendChild(li)
+                        var li1 = document.createElement('li');
+                        li1.innerHTML = '密码：' + data[i].pwd1;
+                        ul.appendChild(li1);
 
-                 li = document.createElement('li')
-                 li.innerText ='电话:'+ data[i].tel
-                 ul.appendChild(li)
+                        var li2 = document.createElement('li');
+                        li2.innerHTML = '用户名：' + data[i].na;
+                        ul.appendChild(li2);
 
-                 li = document.createElement('li')
-                 li.innerText ='生日：'+ data[i].birth
-                 ul.appendChild(li)
+                        var li3 = document.createElement('li');
+                        li3.innerHTML = '电话:' + data[i].tel1;
+                        ul.appendChild(li3);
 
-                 li = document.createElement('li')
-                 if (data[i].Role == 1) {
-                     li.innerText = '身份：用户'
-                 }
-                 else {
-                     li.innerText = '身份：管理员'
-                 }
-                 ul.appendChild(li)
-             }
+                        var li4 = document.createElement('li');
+                        li4.innerHTML = '生日：' + data[i].birth1;
+                        ul.appendChild(li4);
 
-        }
+                        var li5 = document.createElement('li');
+                        if (data[i].Role == 1) {
+                            li5.innerHTML = '身份：用户';
+                        }
+                        else {
+                            li5.innerHTML = '身份：管理员';
+                        }
+                        ul.appendChild(li5);
+
+                       var li6 = document.createElement('li');
+                       var a = document.createElement('a');
+                       a.setAttribute("href","admin/upfor/"+user.id);
+                       a.className = "buy_now";
+                       a.innerText = '修改信息';
+                       li6.appendChild(a);
+                       ul.appendChild(li6);
+                    }
+
+                }
+            }
         })
     }
 
